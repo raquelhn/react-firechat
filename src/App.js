@@ -31,6 +31,8 @@ function App() {
       }else{
         setUser(null);
       }
+
+     
       if(initializing){
         setInitializing(false);
       }
@@ -38,6 +40,7 @@ function App() {
 
     //cleanup subsription
     return unsubscribe;
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   if (initializing) return "loading...";
