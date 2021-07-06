@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import Button from './components/Button';
+import ButtonSign from './components/ButtonSign';
 import Channel from './components/Channel';
+import { Container, Grid} from 'semantic-ui-react'
+
 
 
 firebase.initializeApp({
@@ -45,7 +47,7 @@ function App() {
 
   if (initializing) return "loading...";
 
-  //if (user) return <Channel user={user} />;
+    //if (user) return <Channel user={user} />;
 
   const signInWithGoogle = async () => {
     // Retrieve Google provider object
@@ -60,6 +62,15 @@ function App() {
     }
   };
 
+  const signInWithAnon = async () => {
+  
+    try {
+      await auth.signInAnonymously();      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //this is the signout button from firebase
   const signOut = async () => {
     try {
@@ -69,19 +80,28 @@ function App() {
     }
   };
 
-   
 
 
   return (
     <div>
+    <Grid textAlign='center' centered columns={2}>
+
+    <div>
       {user ? (
         <>
-          <Button onClick={signOut}>Sign Out </Button>
+          <ButtonSign onClick={signOut}>Sign Out </ButtonSign>
           <Channel user={user} db={db}/>
         </>
       ):(
-        <Button onClick={signInWithGoogle}>Sign in with Google</Button>
+        <>
+        <ButtonSign onClick={signInWithGoogle}>Sign in with Google</ButtonSign>
+
+        <ButtonSign onClick={signInWithAnon}>Sign in anonymous</ButtonSign>
+        </>
       )}
+    </div>
+    
+    </Grid>
     </div>
   );
 }

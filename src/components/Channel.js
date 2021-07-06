@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import firebase from 'firebase/app';
-import Message from './Message'
+import Message from './Message';
+import { Input, Button, List} from 'semantic-ui-react'
+
 
 
 
@@ -52,25 +54,27 @@ const handleOnSubmit = e => {
 }
 
 return (
+    
     <>
-    <ul>
+    <List divided relaxed>
         {messages.map(message => (
             <li key={message.id}>
                 <Message {...message}/>
             </li>
         ))}
-    </ul>
+    </List>
     <form onSubmit={handleOnSubmit}>
-        <input
+        <Input
         type="text"
         value={newMessage}
         onChange={handleOnChange}
-        placeholder="type your message here..."/>
-        <button type="submit" disabled={!newMessage}>
+        placeholder="Type your message here..."/>
+        <Button positive type="submit" disabled={!newMessage}>
             Send
-        </button>
+        </Button>
     </form>
     </>
+    
 );
 };
 
