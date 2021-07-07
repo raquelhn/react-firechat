@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import '../src/App.css';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import ButtonSign from './components/ButtonSign';
 import Channel from './components/Channel';
-import { Container, Grid} from 'semantic-ui-react'
+import { Container, Grid} from 'semantic-ui-react';
 
 
 
@@ -83,25 +84,21 @@ function App() {
 
 
   return (
-    <div>
-    <Grid textAlign='center' centered columns={2}>
-
-    <div>
+    <div className="wrapper"> 
+    <Container>
       {user ? (
-        <>
+        <Container textAlign='center'>
           <ButtonSign onClick={signOut}>Sign Out </ButtonSign>
           <Channel user={user} db={db}/>
-        </>
+        </Container>
       ):(
-        <>
+        <Container textAlign='center'>
         <ButtonSign onClick={signInWithGoogle}>Sign in with Google</ButtonSign>
 
         <ButtonSign onClick={signInWithAnon}>Sign in anonymous</ButtonSign>
-        </>
+        </Container>
       )}
-    </div>
-    
-    </Grid>
+    </Container>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import firebase from 'firebase/app';
 import Message from './Message';
-import { Input, Button, List} from 'semantic-ui-react'
+import { Input, Button, List, Container} from 'semantic-ui-react'
 
 
 
@@ -57,11 +57,13 @@ return (
     
     <>
     <List divided relaxed>
+        <Container textAlign='left'>
         {messages.map(message => (
             <li key={message.id}>
                 <Message {...message}/>
             </li>
         ))}
+        </Container>
     </List>
     <form onSubmit={handleOnSubmit}>
         <Input
