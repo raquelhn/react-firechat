@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import ButtonSign from './components/ButtonSign';
 import Channel from './components/Channel';
-import { Container, Grid} from 'semantic-ui-react';
+import { Container, Header} from 'semantic-ui-react';
 
 
 
@@ -64,7 +64,6 @@ function App() {
   };
 
   const signInWithAnon = async () => {
-  
     try {
       await auth.signInAnonymously();      
     } catch (error) {
@@ -93,6 +92,9 @@ function App() {
         </Container>
       ):(
         <Container textAlign='center'>
+          <Header as='h2'>Hi there! welcome to my chat</Header>
+          <p>Please sign in with your gmail account, or if
+          you prefer you can enter anonymously :)</p>
         <ButtonSign onClick={signInWithGoogle}>Sign in with Google</ButtonSign>
 
         <ButtonSign onClick={signInWithAnon}>Sign in anonymous</ButtonSign>
