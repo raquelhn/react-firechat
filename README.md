@@ -5,3 +5,5 @@ This project is a chat in real time that uses firechat to authenticate the user,
 It uses react and Semantic UI, it connects to firebase and use their native functions for the authentication. 
 
 Inside the chat, is possible to see the photo and personal information of the user in case he or she decides to use their gmail account.
+
+The project is hosted in the following link: raquelhn.github.io/react-firechat/
